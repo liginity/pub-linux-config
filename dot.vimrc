@@ -92,3 +92,5 @@ nnoremap <space> za
 " autocmd FileType html,xml,css setlocal tabstop=2
 au FileType html set tabstop=2
 au FileType html set shiftwidth=2
+
+set background=dark

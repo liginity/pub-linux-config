@@ -113,4 +113,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -f ./classified-files/homehere.sh ]; then
+    . /classified-files/homehere.sh
+fi
+
 PATH=~/.local/bin:$PATH
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh

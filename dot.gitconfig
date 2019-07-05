@@ -1,0 +1,6 @@
+[user]
+	email = liginity@outlook.com
+	name = liginity
+[alias]
+	st = status
+	cm = commit
