@@ -114,7 +114,7 @@ if ! shopt -oq posix; then
 fi
 
 if [ -f ./classified-files/homehere.sh ]; then
-    . /classified-files/homehere.sh
+    . ./classified-files/homehere.sh
 fi
 
 PATH=~/.local/bin:$PATH
