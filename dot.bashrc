@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -118,4 +118,20 @@ if [ -f ./classified-files/homehere.sh ]; then
 fi
 
 PATH=~/.local/bin:$PATH
+
+# autojump
+# manual installed autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+# distro autojump
+if [ -f /usr/share/autojump/autojump.sh ]; then
+    . /usr/share/autojump/autojump.sh
+fi
+
+# local PATH
+PATH=~/.local/bin:$PATH
+
+# ssh detection
+if [ $SSH_TTY ]; then
+    PS1=ssh-$PS1
+fi
+
