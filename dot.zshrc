@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # ssh detection
-if [ $SSH_TTY ]; then
+if [ $SSH_TTY ] || [ $SSH_CLIENT ]; then
     PS1=ssh-$PS1
 fi
 
