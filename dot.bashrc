@@ -138,3 +138,10 @@ if [ $SSH_TTY ]; then
     PS1=ssh-$PS1
 fi
 
+# root
+export ROOTSYS=$HOME/root
+if [ -d $ROOTSYS ]; then
+    if [ -f $ROOTSYS/bin/thisroot.sh ]; then
+        source $ROOTSYS/bin/thisroot.sh
+    fi
+fi
