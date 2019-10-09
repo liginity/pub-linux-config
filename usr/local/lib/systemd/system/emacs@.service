@@ -13,3 +13,7 @@ User=%i
 
 [Install]
 WantedBy=multi-user.target
+
+# %i works for instance, at least it resolves to my username
+# %u did not, it resolved to root, probably because it was root systemd process
+# not a user systemd process, or say, invoked like `systemd --user'.
