@@ -53,6 +53,7 @@ This function should only modify configuration layer settings."
      ;; syntax-checking
      treemacs
      ;; version-control
+     chinese
      )
 
    ;; List of additional packages that will be installed without being
@@ -158,7 +159,7 @@ It should only modify the values of Spacemacs settings."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'nil
 
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
@@ -170,7 +171,7 @@ It should only modify the values of Spacemacs settings."
                                 (projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
-   dotspacemacs-startup-buffer-responsive t
+   dotspacemacs-startup-buffer-responsive nil
 
    ;; Default major mode for a new empty buffer. Possible values are mode
    ;; names such as `text-mode'; and `nil' to use Fundamental mode.
@@ -293,7 +294,7 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
 
    ;; If non-nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
@@ -475,3 +476,23 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (pyim pyim-basedict xr pangu-spacing find-by-pinyin-dired chinese-conv ace-pinyin pinyinlib xterm-color which-key vterm use-package treemacs-projectile treemacs-evil toc-org shell-pop pcre2el overseer org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain nameless multi-term macrostep hybrid-mode htmlize helm-xref helm-themes helm-swoop helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-flx helm-descbinds helm-ag gnuplot flycheck-package evil-org evil-mc eshell-z eshell-prompt-extras esh-help elisp-slime-nav dotenv-mode diminish bind-map auto-compile ace-jump-helm-line))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
