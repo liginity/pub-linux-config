@@ -117,7 +117,6 @@ if [ -f ./classified-files/homehere.sh ]; then
     . ./classified-files/homehere.sh
 fi
 
-PATH=~/.local/bin:$PATH
 
 # autojump
 # manual installed autojump
@@ -129,9 +128,20 @@ fi
 
 # local PATH
 PATH=~/.local/bin:$PATH
+PATH=~/.gem/ruby/2.5.0/bin:$PATH
+
+# this is for emacs to get input method of Chinese
+LC_CTYPE=zh_CN.UTF-8
 
 # ssh detection
 if [ $SSH_TTY ]; then
     PS1=ssh-$PS1
 fi
 
+# root
+export ROOTSYS=$HOME/root
+if [ -d $ROOTSYS ]; then
+    if [ -f $ROOTSYS/bin/thisroot.sh ]; then
+        source $ROOTSYS/bin/thisroot.sh
+    fi
+fi
