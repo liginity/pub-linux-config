@@ -120,7 +120,7 @@ func! CompileRunGcc()
         exec "!time ./%:r.out"
     elseif &filetype=='cpp'
         exec "!g++ % -o %:r.out"
-        exec "time ./%:r.out"
+        exec "!time ./%:r.out"
     elseif &filetype=='sh'
         :!time bash %
     elseif &filetype=='python'
