@@ -1,0 +1,9 @@
+autojump
+build-essential
+cmake
+curl
+dos2unix
+git
+net-tools
+python3-pip
+vim
