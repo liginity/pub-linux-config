@@ -1,0 +1,14 @@
+autojump
+bash-doc
+build-essential
+cmake
+curl
+dos2unix
+git
+htop
+iftop
+net-tools
+network-manager-openvpn
+python3-pip
+python3-venv
+vim
