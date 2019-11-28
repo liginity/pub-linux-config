@@ -7,26 +7,36 @@ trap "echo 'error: Script failed: see failed command above'" ERR
 RELATIVE_CONFIG_DIR="../../userhome"
 REAL_CONFIG_DIR=$(realpath $RELATIVE_CONFIG_DIR)
 
-sp="+----------+----------+----------+----------+----------+"
+sp="--------------------------------------------------------"
+backup_stamp=$(date +"%m_%d_%Y_%Hh_%Mm")
 
 link_basic() {
   # link only basic settings
-  config_files=(dot.bashrc dot.vimrc dot.gitconfig dot.bash_aliases)
+  config_files=(.bashrc .vimrc .gitconfig .bash_aliases)
   echo "these files are to be linked to your home directory"
   for config_file in ${config_files[@]}; do
     echo "$config_file"
   done
-  read -p "will you continue? [y/N] " confirm
+  read -p "will you continue? [y/N(default)] " confirm
   if [[ $confirm == "" || $confirm == [nN] ]]; then
     exit 0
   fi
-  echo "These files are going to be linked"
-  echo "ln -s $REAL_CONFIG_DIR/dot.zshrc $HOME/.zshrc"
-  echo "ln -s $REAL_CONFIG_DIR/dot.bashrc $HOME/.bashrc"
-  echo "ln -s $REAL_CONFIG_DIR/dot.vimrc $HOME/.vimrc"
-  ln -s $REAL_CONFIG_DIR/dot.zshrc $HOME/.zshrc
-  ln -s $REAL_CONFIG_DIR/dot.bashrc $HOME/.bashrc
-  ln -s $REAL_CONFIG_DIR/dot.vimrc $HOME/.vimrc
+  # link files, with check
+  # - check for symbolic links of the config files
+  # - check for existence, and back up with time stamp
+  for config_file in ${config_files[@]}; do
+    config_file_fullpath=$HOME/$config_file
+    echo $sp
+    if [ -L $config_file_fullpath ]; then
+      echo "$config_file_fullpath exists as a simbolic link, relink it"
+      echo "ln -s -f $REAL_CONFIG_DIR/dot.$config_file $config_file_fullpath"
+    elif [ -f $config_file_fullpath ]; then
+      echo "$config_file_fullpath exists, back it up"
+      echo "mv $config_file_fullpath "$config_file_fullpath"_$backup_stamp.backup"
+      echo "ln -s $REAL_CONFIG_DIR/dot.$config_file $config_file_fullpath"
+    fi
+  done
+
 }
 
 usage() {
