@@ -127,8 +127,9 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
 fi
 
 # local PATH
-PATH=~/.local/bin:$PATH
-PATH=~/.gem/ruby/2.5.0/bin:$PATH
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+PATH="$HOME/local/bin:$PATH"
 
 # this is for emacs to get input method of Chinese
 # LC_CTYPE=zh_CN.UTF-8
