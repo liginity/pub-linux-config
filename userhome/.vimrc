@@ -34,6 +34,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 "     set conceallevel=1
 "     let g:tex_conceal='abdmg'
 
+" for commenting
+Plug 'preservim/nerdcommenter'
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -152,21 +154,17 @@ noremap <Leader>tn :tabn<CR>
 """"""""""
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
-    exec "w"
+    exec "x"
     if &filetype=='c'
-        exec "!g++ % -o %:r.out"
-        exec "!time ./%:r.out"
+        exec "!gcc % -o %:r.out && time ./%:r.out"
     elseif &filetype=='cpp'
-        exec "!g++ % -o %:r.out"
-        exec "!time ./%:r.out"
+        exec "!g++ % -o %:r.out && time ./%:r.out"
     elseif &filetype=='sh'
-"         :!time bash %
         exec "!time bash %"
     elseif &filetype=='python'
         exec "!time python3 %"
     elseif &filetype=='tex'
-        exec "!latex %"
-        exec "!latex %"
+        exec "!latex % && latex %"
     endif
 endfunc
 
@@ -177,7 +175,7 @@ map <F6> :call SpecialRun()<CR>
 func! SpecialRun()
     " for example, root macro with .cpp
     " or ctex with .tex
-    exec "w"
+    exec "x"
     if &filetype=='cpp'
         exec "!root.exe %"
     elseif &filetype=='tex'
@@ -203,11 +201,11 @@ func! CAddFileInfo()
 endfunc
 
 " Commenting blocks of code.
-autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
-autocmd FileType sh,zsh,ruby,python   let b:comment_leader = '# '
-autocmd FileType conf,fstab       let b:comment_leader = '# '
-autocmd FileType tex              let b:comment_leader = '% '
-autocmd FileType mail             let b:comment_leader = '> '
-autocmd FileType vim              let b:comment_leader = '" '
-noremap <silent> <Leader>cl :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> <Leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+" autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
+" autocmd FileType sh,zsh,ruby,python   let b:comment_leader = '# '
+" autocmd FileType conf,fstab       let b:comment_leader = '# '
+" autocmd FileType tex              let b:comment_leader = '% '
+" autocmd FileType mail             let b:comment_leader = '> '
+" autocmd FileType vim              let b:comment_leader = '" '
+" noremap <silent> <Leader>cl :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+" noremap <silent> <Leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
