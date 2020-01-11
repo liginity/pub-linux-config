@@ -131,7 +131,7 @@ PATH=~/.local/bin:$PATH
 PATH=~/.gem/ruby/2.5.0/bin:$PATH
 
 # this is for emacs to get input method of Chinese
-LC_CTYPE=zh_CN.UTF-8
+# LC_CTYPE=zh_CN.UTF-8
 
 # ssh detection
 if [ $SSH_TTY ]; then
