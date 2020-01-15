@@ -154,7 +154,8 @@ noremap <Leader>tn :tabn<CR>
 """"""""""
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
-    exec "x"
+    " I found the way to write, simple, in the document
+    exec "update"
     if &filetype=='c'
         exec "!gcc % -o %:r.out && time ./%:r.out"
     elseif &filetype=='cpp'
@@ -175,7 +176,7 @@ map <F6> :call SpecialRun()<CR>
 func! SpecialRun()
     " for example, root macro with .cpp
     " or ctex with .tex
-    exec "x"
+    exec "update"
     if &filetype=='cpp'
         exec "!root.exe %"
     elseif &filetype=='tex'
