@@ -21,6 +21,7 @@ Plug 'junegunn/vim-plug'
 
 " Multiple Plug commands can be written in a single line using | separators
 " supertab helps to make ultisnips and vim-snippets works together
+" ATTENTION ! needs python support for vim to use ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'ervandew/supertab'
 
