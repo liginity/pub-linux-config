@@ -136,7 +136,7 @@ PATH="$HOME/local/bin:$PATH"
 
 # ssh detection
 if [ $SSH_TTY ]; then
-    PS1=ssh-$PS1
+    PS1=${PS1/\\u/ssh-\\u}
 fi
 
 # root
@@ -159,3 +159,5 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   # exec replace current session with a new one. so there would be no other shell to fall back to.
   exec tmux new -Asdefault
 fi
+# in order to use vim in ipython
+export EDITOR=vim
