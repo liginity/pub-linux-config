@@ -130,6 +130,7 @@ fi
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 PATH="$HOME/local/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
 
 # this is for emacs to get input method of Chinese
 # LC_CTYPE=zh_CN.UTF-8
@@ -152,12 +153,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  #export TERM=xterm-256color && exec tmux new -Asdefault
-  #export TERM=screen-256color
-  #exec tmux -2 new -Asdefault
-  # exec replace current session with a new one. so there would be no other shell to fall back to.
-  exec tmux new -Asdefault
-fi
-# in order to use vim in ipython
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   #export TERM=xterm-256color && exec tmux new -Asdefault
+#   #export TERM=screen-256color
+#   #exec tmux -2 new -Asdefault
+#   # exec replace current session with a new one. so there would be no other shell to fall back to.
+#   exec tmux new -Asdefault
+# fi
+## in order to use vim in ipython
 export EDITOR=vim
