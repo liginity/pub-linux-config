@@ -4,14 +4,15 @@ Linux configuration files used on public servers. Now very simple.
 
 # structure
 
-- userhome
+- `userhome/`
 
     dot files like `.vimrc`, `.bashrc`.
-- etc and so on
+
+- `etc/` and so on
 
     files in /etc and so on.
 
-- scripts
+- `administration-scripts/`
 
     simple configuration scripts. Run at one's own risk.
 
