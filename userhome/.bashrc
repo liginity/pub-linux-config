@@ -113,34 +113,31 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ./classified-files/homehere.sh ]; then
-    . ./classified-files/homehere.sh
-fi
 
-
-# autojump
-# manual installed autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-# distro autojump
+## autojump
+## manual installed autojump
+# [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+## distro autojump
 if [ -f /usr/share/autojump/autojump.sh ]; then
     . /usr/share/autojump/autojump.sh
 fi
 
-# local PATH
+## local PATH
 PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+#PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
 PATH="$HOME/local/bin:$PATH"
-PATH="$HOME/go/bin:$PATH"
+#PATH="$HOME/go/bin:$PATH"
 
-# this is for emacs to get input method of Chinese
-# LC_CTYPE=zh_CN.UTF-8
+## this is for emacs to get input method of Chinese
+## also needed to properly show Chinese in ssh sessions.
+LC_CTYPE=zh_CN.UTF-8
 
 # ssh detection
-if [ $SSH_TTY ]; then
-    PS1=${PS1/\\u/ssh-\\u}
+if [ $SSH_TTY ] || [ $SSH_CLIENT ]; then
+    PS1=ssh-${PS1}
 fi
 
-# root
+## root
 export ROOTSYS=$HOME/root
 if [ -d $ROOTSYS ]; then
     if [ -f $ROOTSYS/bin/thisroot.sh ]; then

@@ -100,12 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# ssh detection
+## ssh detection
 if [ $SSH_TTY ] || [ $SSH_CLIENT ]; then
     PS1=ssh-$PS1
 fi
 
-# root
+## root
 export ROOTSYS=$HOME/root
 if [ -d $ROOTSYS ]; then
     if [ -f $ROOTSYS/bin/thisroot.sh ]; then
