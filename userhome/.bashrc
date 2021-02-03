@@ -130,7 +130,7 @@ PATH="$HOME/local/bin:$PATH"
 
 ## this is for emacs to get input method of Chinese
 ## also needed to properly show Chinese in ssh sessions.
-LC_CTYPE=zh_CN.UTF-8
+export LC_CTYPE=zh_CN.UTF-8
 
 # ssh detection
 if [ $SSH_TTY ] || [ $SSH_CLIENT ]; then
