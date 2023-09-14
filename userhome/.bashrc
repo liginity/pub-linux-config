@@ -16,8 +16,10 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+#HISTSIZE=1000
+#HISTFILESIZE=2000
+# NOTE when HISTFILESIZE is set, history file is truncated immediately.
+#      so it is commented out here.
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -120,6 +122,10 @@ fi
 # the above settings are from /etc/skel/.bashrc on ubuntu 22.04.2 LTS (Jammy Jellyfish).
 # only a few settings have bee changed.
 
+
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTTIMEFORMAT="%F-%H-%M "
 
 ## autojump
 ## manual installed autojump
