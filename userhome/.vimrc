@@ -50,7 +50,7 @@ au FileType html setlocal tabstop=2 shiftwidth=2
 " NOTE the above settings are good for basic usage.
 
 " maps
-" nnoremap <space> za (open fold)
+"nnoremap <space> za (open fold)
 let mapleader=" "
 map <Leader> <NOP>
 " map window command
@@ -114,12 +114,12 @@ func! SpecialRun()
 endfunc
 
 
-" func! Automaticpep8()
-"     exec "w"
-"     if &filetype=='python'
-"         exec "!autopep8 --in-place --aggressive --aggressive %"
-"     endif
-" endfunc
+"func! Automaticpep8()
+"    exec "w"
+"    if &filetype=='python'
+"        exec "!autopep8 --in-place --aggressive --aggressive %"
+"    endif
+"endfunc
 
 func! CAddFileInfo()
     "I can add write this as LICENSE one day.
@@ -130,11 +130,11 @@ func! CAddFileInfo()
 endfunc
 
 " Commenting blocks of code.
-" autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
-" autocmd FileType sh,zsh,ruby,python   let b:comment_leader = '# '
-" autocmd FileType conf,fstab       let b:comment_leader = '# '
-" autocmd FileType tex              let b:comment_leader = '% '
-" autocmd FileType mail             let b:comment_leader = '> '
-" autocmd FileType vim              let b:comment_leader = '" '
-" noremap <silent> <Leader>cl :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-" noremap <silent> <Leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+"autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
+"autocmd FileType sh,zsh,ruby,python   let b:comment_leader = '# '
+"autocmd FileType conf,fstab       let b:comment_leader = '# '
+"autocmd FileType tex              let b:comment_leader = '% '
+"autocmd FileType mail             let b:comment_leader = '> '
+"autocmd FileType vim              let b:comment_leader = '" '
+"noremap <silent> <Leader>cl :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+"noremap <silent> <Leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
