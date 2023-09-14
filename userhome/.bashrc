@@ -121,18 +121,20 @@ fi
 # NOTE
 # the above settings are from /etc/skel/.bashrc on ubuntu 22.04.2 LTS (Jammy Jellyfish).
 # only a few settings have bee changed.
+# convention:
+#     commented out bash code has no space after "#" (for the first line in a block).
 
 
 HISTSIZE=10000
 HISTFILESIZE=20000
 HISTTIMEFORMAT="%F-%H-%M "
 
-## autojump
+# autojump
 if [ -f /usr/share/autojump/autojump.sh ]; then
     . /usr/share/autojump/autojump.sh
 fi
 
-## local PATH
+# local PATH
 #PATH="$HOME/.local/bin:$PATH"
 # "$HOME/.local/bin" would be added in .profile.
 #PATH="$HOME/go/bin:$PATH"
@@ -146,29 +148,30 @@ if [ $SSH_TTY ] || [ $SSH_CLIENT ]; then
     PS1=ssh-${PS1}
 fi
 
-## nvm
-## NOTE nvm needs quite sometime to start.
-## so don't use when you don't need it
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-## [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# nvm
+# NOTE nvm needs quite sometime to start.
+#      so don't use when you don't need it
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+##[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # lazyload function
 function nvm () {
     unfunction nvm
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-    ## finish the first command using `nvm`
+    # finish the first command using `nvm`
     nvm "$@"
 }
 
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   #export TERM=xterm-256color && exec tmux new -Asdefault
-#   #export TERM=screen-256color
-#   #exec tmux -2 new -Asdefault
-#   # exec replace current session with a new one. so there would be no other shell to fall back to.
-#   exec tmux new -Asdefault
-# fi
-## in order to use vim in ipython
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#  #export TERM=xterm-256color && exec tmux new -Asdefault
+#  #export TERM=screen-256color
+#  #exec tmux -2 new -Asdefault
+#  # exec replace current session with a new one. so there would be no other shell to fall back to.
+#  exec tmux new -Asdefault
+#fi
+
+# in order to use vim in ipython
 export EDITOR=vim
