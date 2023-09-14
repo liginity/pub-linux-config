@@ -175,3 +175,11 @@ function nvm () {
 
 # in order to use vim in ipython
 export EDITOR=vim
+
+# more bash configuration.
+# idea:
+#   - the .bashrc file is kept unmodified.
+#   - this bash_config.sh would be used to store more settings.
+if [ -f ~/.config/bash_config.sh ]; then
+    source ~/.config/bash_config.sh
+fi
