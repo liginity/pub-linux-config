@@ -19,32 +19,35 @@ set background=dark
 " when used msys2 vim in powershell ( didn't know cause )
 set backspace=2
 set foldenable foldmethod=manual
-" set formatoptions-=cro
+"set formatoptions-=cro
 set noautoread nobackup noswapfile confirm
 set magic iskeyword+=_
-" set selection=exclusive
+"set selection=exclusive
 set selectmode=mouse,key
-" set nomodeline
+"set nomodeline
 set scrolloff=5
-:set hlsearch
-" setlocal spell
-" set spelllang=en_us
-" inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+set hlsearch
+"setlocal spell
+"set spelllang=en_us
+"inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 syntax on
 filetype on
 filetype indent on
 filetype plugin on
 filetype plugin indent on
-" set wrapscan ignorecase incsearch hlsearch
+"set wrapscan ignorecase incsearch hlsearch
+
 " au or autocmd
 autocmd FileType sh,javascript,html,css,scss,yaml,ruby,vb,sql set tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html,htmldjango,css,scss,make,text set noexpandtab
-" autocmd FileType * set formatoptions-=cro
-" autocmd BufNewFile *.[ch],*.[ch]pp exec ":call CAddFileInfo()"
-" autocmd BufWritePre * :%s/^\s\+$//e " Only trim empty lines
-" autocmd FileType html,xml,css setlocal tabstop=2
+"autocmd FileType * set formatoptions-=cro
+"autocmd BufNewFile *.[ch],*.[ch]pp exec ":call CAddFileInfo()"
+"autocmd BufWritePre * :%s/^\s\+$//e " Only trim empty lines
+"autocmd FileType html,xml,css setlocal tabstop=2
 au FileType html setlocal tabstop=2 shiftwidth=2
+
+" NOTE the above settings are good for basic usage.
 
 " maps
 " nnoremap <space> za (open fold)
