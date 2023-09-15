@@ -1,6 +1,8 @@
+[init]
+	defaultBranch = main
 [user]
-	email = liginity@outlook.com
 	name = liginity
+	email = liginity@outlook.com
 [alias]
 	st = status
 	cm = commit
