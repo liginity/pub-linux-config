@@ -176,6 +176,9 @@ function nvm () {
 # in order to use vim in ipython
 export EDITOR=vim
 
+# disable software flow control (by default, C-s stops terminal printing text).
+stty -ixon
+
 # more bash configuration.
 # idea:
 #   - the .bashrc file is kept unmodified.
