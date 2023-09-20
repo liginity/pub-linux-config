@@ -134,6 +134,17 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
     . /usr/share/autojump/autojump.sh
 fi
 
+# append argument 1 to PATH if it is not present in PATH.
+# I see this in /etc/profile on archlinux.
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
 # local PATH
 #PATH="$HOME/.local/bin:$PATH"
 # "$HOME/.local/bin" would be added in .profile.
