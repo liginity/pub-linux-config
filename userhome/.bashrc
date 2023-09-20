@@ -137,6 +137,18 @@ fi
 # append argument 1 to PATH if it is not present in PATH.
 # I see this in /etc/profile on archlinux.
 append_path () {
+    # test argument 1.
+    if [ ! -v 1 ]; then
+        # argument 1 is not set
+        # this is wrong usage of the function.
+        # NOTE "-v" is a feature of bash. it seems not to be present in dash.
+        return
+    fi
+    if [ -z "${1}" ]; then
+        # argument 1 is "" (i.e., null).
+        return
+    fi
+
     case ":$PATH:" in
         *:"$1":*)
             ;;
