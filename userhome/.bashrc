@@ -168,7 +168,7 @@ export LC_CTYPE=zh_CN.UTF-8
 
 # ssh detection
 if [ $SSH_TTY ] || [ $SSH_CLIENT ]; then
-    PS1=ssh-${PS1}
+    PS1="(ssh) ${PS1}"
 fi
 
 # nvm
