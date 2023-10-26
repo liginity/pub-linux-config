@@ -6,9 +6,16 @@ set -euo pipefail
 #      plan to add a debug option, so that when writing the code,
 #      it would be convenient to see variables.
 
-backup_suffix=$(date +"%Y%m%d_%H_%M_%S")
+# idea (for a possible rewrite)
+# 1. create symbolic links for configuration files.
+#    example: a symbolic link at /home/user/.vimrc, pointing to the .vimrc in this repo.
+# 2. for configuration files in a folder, for example, ~/.emacs.d, wait to decide.
+
+timestamp_format="%Y%m%d-%H%M%S"
+timestamp=$(date +"${timestamp_format}")
+backup_suffix="${timestamp}"
 # this script should be called inside the repo's root
-repo_dir=$PWD
+#repo_dir=$PWD
 
 # DONE shell script function's name space?  local variable?
 link_afile() {
