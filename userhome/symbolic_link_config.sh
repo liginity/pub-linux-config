@@ -1,8 +1,5 @@
 #!/bin/bash
 set -euo pipefail
-# TODO add a debug option
-#      plan to add a debug option, so that when writing the code,
-#      it would be convenient to see variables.
 
 # idea (for a possible rewrite)
 # 1. create symbolic links for configuration files.
@@ -12,8 +9,6 @@ set -euo pipefail
 timestamp_format="%Y%m%d-%H%M%S"
 timestamp=$(date +"${timestamp_format}")
 backup_suffix="${timestamp}"
-# this script should be called inside the repo's root
-#repo_dir=$PWD
 
 # a wrapper function for ln, for making symbolic link.
 # this function checks the presence of the LINK_NAME parameter.
@@ -42,57 +37,11 @@ link_one_file() {
     ln -s $(realpath $target) $link_name
 }
 
-# link config folder's content into destination
-# usually, the upmost folder is a hidden folder, like '.vimrc'
-link_afolder() {
-    # e.g. repo/myconfig/.vimrc -> ~/.vimrc
-    # or, repo/myconfig/dot.vimrc -> ~/.vimrc
-    # write this using loop, instead of recursion
-    # use bash globstar, introduced in version 4
-    # $1 is the real folder name
-    # $2 is the destination
-    # echo "\$1 is $1"
-    # echo "\$2 is $2"
-    local folder=$1
-    local dest=$2
-    local file
-    local inner_path
-    mkdir -p $dest
-    shopt -s globstar
-    # DONE if 'file' is used in the caller after calling this function, this would bring trouble.
-    # use local variables
-    for file in $folder/**/*; do
-        inner_path=$(realpath --relative-base=$folder $file)
-        if [ -f $file ]; then
-            link_one_file $file $dest/$inner_path
-        elif [ -d $file ]; then
-            mkdir -p $dest/$inner_path
-        fi
-    done
-    shopt -u globstar
-}
-
-
-link_config() {
-    local file
-    local folder=$1
-    # create a folder in home directory, and '-p' would be fine with existent directory.
-    mkdir -p $HOME/$folder
-    for file in $folder/.[!.]*; do
-        echo $file;
-        if [ -f $file ]; then
-            link_one_file $file $HOME/$folder/$file
-        elif [ -d $file ] && [ ! $(basename $file) == ".git" ]; then
-            echo "$file is a non-git-repository folder"
-            # link_config $file
-            link_afolder $file $HOME/$file
-        fi
-    done
-}
-
 main() {
-    link_config .
+    files=(.bashrc .bash_aliases .vimrc .tmux.conf .gitconfig)
+    for file in "${files[@]}"; do
+        link_one_file $file ~/$file
+    done
 }
 
-# main
-link_one_file "$@"
+main
