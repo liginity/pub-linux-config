@@ -1,7 +1,5 @@
 #!/bin/bash
 set -euo pipefail
-# TODO variable naming
-#      should there be 'file', 'folder' or 'afile', 'afolder'?
 # TODO add a debug option
 #      plan to add a debug option, so that when writing the code,
 #      it would be convenient to see variables.
@@ -17,30 +15,31 @@ backup_suffix="${timestamp}"
 # this script should be called inside the repo's root
 #repo_dir=$PWD
 
-# DONE shell script function's name space?  local variable?
-link_afile() {
-    # e.g. repo/myconfig/.vim/xx.vim -> ~/.vim/xx.vim
+# a wrapper function for ln, for making symbolic link.
+# this function checks the presence of the LINK_NAME parameter.
+link_one_file() {
+    # example: repo/userhome/.vimrc -> ~/.vimrc
     # $1 is the real file name
     # $2 is the destination for the symbolic link, i.e. its name
-    # echo "\$1 is $1"
-    # echo "\$2 is $2"
-    local file=$1
-    local dest=$2
-    # DONE should mdir put here, or put at the caller?
-    # decide to put here
-    mkdir -p $(dirname dest)
-    # remove the original symbolic link.  Design it.
-    ## mind the order of the two conditions
-    if [ -L $dest ]; then
-        rm $dest
+    if [ $# -lt 2 ]; then
+        printf "usage: link_one_file TARGET LINK_NAME\n" >&2
+        exit 1
+    fi
+
+    local target="$1"
+    local link_name="$2"
+
+    # remove the original symbolic link if present.
+    # mind the order of the two if conditions.
+    if [ -L $link_name ]; then
+        rm $link_name
     fi
     # back up file
-    if [ -f $dest ]; then
-        # How to mark the region of variable names?
-        # now use {}
-        mv $dest ${dest}_${backup_suffix}
+    if [ -f $link_name ]; then
+        mv $link_name ${link_name}-${backup_suffix}
     fi
-    ln -s $(realpath $file) $dest
+
+    ln -s $(realpath $target) $link_name
 }
 
 # link config folder's content into destination
@@ -65,7 +64,7 @@ link_afolder() {
     for file in $folder/**/*; do
         inner_path=$(realpath --relative-base=$folder $file)
         if [ -f $file ]; then
-            link_afile $file $dest/$inner_path
+            link_one_file $file $dest/$inner_path
         elif [ -d $file ]; then
             mkdir -p $dest/$inner_path
         fi
@@ -82,7 +81,7 @@ link_config() {
     for file in $folder/.[!.]*; do
         echo $file;
         if [ -f $file ]; then
-            link_afile $file $HOME/$folder/$file
+            link_one_file $file $HOME/$folder/$file
         elif [ -d $file ] && [ ! $(basename $file) == ".git" ]; then
             echo "$file is a non-git-repository folder"
             # link_config $file
@@ -95,4 +94,5 @@ main() {
     link_config .
 }
 
-main
+# main
+link_one_file "$@"
