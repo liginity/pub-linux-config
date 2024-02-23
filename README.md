@@ -16,3 +16,10 @@ Linux configuration files used on public servers. Now very simple.
 
     simple configuration scripts. Run at one's own risk.
 
+# How some configuration files come out
+
+## generate `.clang-format`
+
+```
+clang-format-14 --style="{BasedOnStyle: llvm, IndentWidth: 4, SeparateDefinitionBlocks: Always, MaxEmptyLinesToKeep: 2}" --dump-config > .clang-format-14
+```
