@@ -14,7 +14,7 @@ set encoding=utf-8
 " GUI font (source code pro)
 set guifont=Source\ Code\ Pro:h14
 " background dark, the color feels better
-set background=dark
+"set background=dark
 " backspace: solve the problem of being unable to backspace
 " when used msys2 vim in powershell ( didn't know cause )
 set backspace=2
