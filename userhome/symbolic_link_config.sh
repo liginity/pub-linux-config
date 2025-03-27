@@ -26,15 +26,15 @@ link_one_file() {
 
     # remove the original symbolic link if present.
     # mind the order of the two if conditions.
-    if [ -L $link_name ]; then
-        rm $link_name
+    if [ -L "${link_name}" ]; then
+        rm "${link_name}"
     fi
     # back up file
-    if [ -f $link_name ]; then
-        mv $link_name ${link_name}-${backup_suffix}
+    if [ -f "${link_name}" ]; then
+        mv "${link_name}" "${link_name}-${backup_suffix}"
     fi
 
-    ln -s $(realpath $target) $link_name
+    ln -s "$(realpath "${target}")" "${link_name}"
 }
 
 main() {
