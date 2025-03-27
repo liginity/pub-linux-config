@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # idea (for a possible rewrite)
-# 1. create symbolic links for configuration files.
+# 1. (done) create symbolic links for configuration files.
 #    example: a symbolic link at /home/user/.vimrc, pointing to the .vimrc in this repo.
 # 2. for configuration files in a folder, for example, ~/.emacs.d, wait to decide.
 
@@ -13,9 +13,9 @@ backup_suffix="${timestamp}"
 # a wrapper function for ln, for making symbolic link.
 # this function checks the presence of the LINK_NAME parameter.
 link_one_file() {
-    # example: repo/userhome/.vimrc -> ~/.vimrc
+    # example: repo/userhome/.vimrc <- ~/.vimrc
     # $1 is the real file name
-    # $2 is the destination for the symbolic link, i.e. its name
+    # $2 is the location for the symbolic link, i.e. its name
     if [ $# -lt 2 ]; then
         printf "usage: link_one_file TARGET LINK_NAME\n" >&2
         exit 1
