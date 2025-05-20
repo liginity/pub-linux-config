@@ -1,0 +1,9 @@
+# this is used in linux kernel for clangd config.
+
+CompileFlags:
+  Add: [-Wno-unknown-warning-option]
+  Remove: [-mindirect-branch-cs-prefix, -mfunction-return=thunk-extern, -ftrivial-auto-var-init=zero]
+
+Diagnostics:
+  ClangTidy:
+    Remove: bugprone-sizeof-expression

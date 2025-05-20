@@ -1,0 +1,4 @@
+# this is not working.
+CheckOptions:
+  bugprone-sizeof-expression.WarnOnSizeOfPointerToAggregate: 'false'
+  cplusplus.WarnOnSizeOfPointerToAggregate: 'false'
