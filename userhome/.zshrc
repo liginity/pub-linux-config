@@ -2,16 +2,27 @@
 
 autoload -Uz promptinit
 promptinit
-prompt adam1
+prompt redhat
+# [exit_status], if exit status is not 0.
+# (timestamp), 24-hour format.
+# user@host:path
+# % for normal user, # for root.
+PROMPT='%(?..[%?] )(%T) %F{green}%n%f@%F{red}%m%f:%F{blue}%~%f%# '
 
-setopt histignorealldups sharehistory
+setopt histignoredups
+setopt histignorespace
+setopt histreduceblanks
+# for timestamp in history
+setopt extendedhistory
+
+WORDCHARS=${WORDCHARS//\//}
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+# Save history to ~/.zsh_history:
+HISTSIZE=40000
+SAVEHIST=40000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
