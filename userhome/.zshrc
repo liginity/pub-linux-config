@@ -1,3 +1,4 @@
+# NOTE based on /etc/zsh/newuser.zshrc.recommended.
 # Set up the prompt
 
 autoload -Uz promptinit
@@ -46,3 +47,25 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+if [ -f ~/.config/zsh_functions.zsh ]; then
+    source ~/.config/zsh_functions.zsh
+fi
+
+
+# aliases
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -la'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias py='python3'
+
+alias emc='emacsclient'
+alias emct='emacsclient -t'
+alias emcn='emacsclient -n'
+
+alias rsync='rsync -e "ssh -o ClearAllForwardings=yes"'
