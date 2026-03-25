@@ -48,15 +48,24 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# it seems necessary
+PATH="$HOME/.local/bin:$PATH"
+
+if [ -f ~/.config/zsh_config.zsh ]; then
+    source ~/.config/zsh_config.zsh
+fi
+
 if [ -f ~/.config/zsh_functions.zsh ]; then
     source ~/.config/zsh_functions.zsh
 fi
 
 
 # aliases
+alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
+alias llh='ls -lh'
 
 alias rm='rm -i'
 alias cp='cp -i'
