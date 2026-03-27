@@ -9,6 +9,10 @@ prompt redhat
 # user@host:path
 # % for normal user, # for root.
 PROMPT='%(?..[%?] )(%T) %F{green}%n%f@%F{red}%m%f:%F{blue}%~%f%# '
+# ssh detection
+if [ "$SSH_TTY" ] || [ "$SSH_CLIENT" ]; then
+    PS1="${PS1/\(%T\)/(ssh) (%T)}"
+fi
 
 setopt histignoredups
 setopt histignorespace
@@ -50,6 +54,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # it seems necessary
 PATH="$HOME/.local/bin:$PATH"
+
+# disable software flow control (by default, C-s stops terminal printing text).
+stty -ixon
 
 if [ -f ~/.config/zsh_config.zsh ]; then
     source ~/.config/zsh_config.zsh
