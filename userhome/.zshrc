@@ -19,6 +19,7 @@ setopt histignorespace
 setopt histreduceblanks
 # for timestamp in history
 setopt extendedhistory
+setopt interactivecomments
 
 WORDCHARS=${WORDCHARS//\//}
 
@@ -79,9 +80,13 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias py='python3'
+alias ipy='ipython3'
 
 alias emc='emacsclient'
 alias emct='emacsclient -t'
 alias emcn='emacsclient -n'
 
 alias rsync='rsync -e "ssh -o ClearAllForwardings=yes"'
+
+alias oc='opencode'
+# maybe add "o" or "c" in the future.
