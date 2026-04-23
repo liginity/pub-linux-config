@@ -67,6 +67,10 @@ if [ -f ~/.config/zsh_functions.zsh ]; then
     source ~/.config/zsh_functions.zsh
 fi
 
+# aliases
+if [ -f ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases
+fi
 
 # aliases
 alias ls='ls --color=auto'
