@@ -4,6 +4,7 @@
 autoload -Uz promptinit
 promptinit
 prompt redhat
+setopt promptsp
 # [exit_status], if exit status is not 0.
 # (timestamp), 24-hour format.
 # user@host:path
@@ -67,6 +68,10 @@ if [ -f ~/.config/zsh_functions.zsh ]; then
     source ~/.config/zsh_functions.zsh
 fi
 
+# aliases
+if [ -f ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases
+fi
 
 # aliases
 alias ls='ls --color=auto'

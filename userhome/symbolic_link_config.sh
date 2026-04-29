@@ -38,7 +38,7 @@ link_one_file() {
 }
 
 main() {
-    files=(.bashrc .bash_aliases .vimrc .tmux.conf .gitconfig)
+    files=(.zshrc .bashrc .bash_aliases .vimrc .tmux.conf .gitconfig)
     for file in "${files[@]}"; do
         link_one_file $file ~/$file
     done
