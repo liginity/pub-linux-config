@@ -4,6 +4,7 @@
 autoload -Uz promptinit
 promptinit
 prompt redhat
+setopt promptsp
 # [exit_status], if exit status is not 0.
 # (timestamp), 24-hour format.
 # user@host:path
