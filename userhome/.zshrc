@@ -95,3 +95,7 @@ alias rsync='rsync -e "ssh -o ClearAllForwardings=yes"'
 
 alias oc='opencode'
 # maybe add "o" or "c" in the future.
+
+
+# envs
+export MANWIDTH=88
