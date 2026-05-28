@@ -15,6 +15,8 @@ if [ "$SSH_TTY" ] || [ "$SSH_CLIENT" ]; then
     PS1="${PS1/\(%T\)/(ssh) (%T)}"
 fi
 
+
+# zsh options
 setopt histignoredups
 setopt histignorespace
 setopt histreduceblanks
@@ -53,6 +55,11 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# complete_history
+zstyle ':completion:history-words:*' range 500:40
+# move around completion candidates
+zstyle ':completion:*' menu yes select
 
 # it seems necessary
 PATH="$HOME/.local/bin:$PATH"
