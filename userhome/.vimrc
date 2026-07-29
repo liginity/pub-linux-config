@@ -138,3 +138,6 @@ endfunc
 "autocmd FileType vim              let b:comment_leader = '" '
 "noremap <silent> <Leader>cl :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 "noremap <silent> <Leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+
+" use vertical split in netrw by default.
+let g:netrw_preview = 1
