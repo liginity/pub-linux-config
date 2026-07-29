@@ -9,7 +9,7 @@ setopt promptsp
 # (timestamp), 24-hour format.
 # user@host:path
 # % for normal user, # for root.
-PROMPT='%(?..[%?] )(%T) %F{green}%n%f@%F{red}%m%f:%F{blue}%~%f%# '
+PS1='%(?..[%?] )(%T) %F{green}%n%f@%F{red}%m%f:%F{blue}%~%f%# '
 # ssh detection
 if [ "$SSH_TTY" ] || [ "$SSH_CLIENT" ]; then
     PS1="${PS1/\(%T\)/(ssh) (%T)}"
@@ -106,3 +106,15 @@ alias oc='opencode'
 
 # envs
 export MANWIDTH=88
+
+# some utils
+# switch the prompt to a simplified one.
+function switch-prompt () {
+    if [[ -z "${_STORED_PS1:-}" ]]; then
+        _STORED_PS1="$PS1"
+        PS1='%(?..[%?] )%F{green}user%f:%F{blue}%~%f$ '
+    else
+        PS1="${_STORED_PS1}"
+        _STORED_PS1=""
+    fi
+}
