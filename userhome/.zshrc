@@ -9,12 +9,14 @@ setopt promptsp
 # (timestamp), 24-hour format.
 # user@host:path
 # % for normal user, # for root.
-PROMPT='%(?..[%?] )(%T) %F{green}%n%f@%F{red}%m%f:%F{blue}%~%f%# '
+PS1='%(?..[%?] )(%T) %F{green}%n%f@%F{red}%m%f:%F{blue}%~%f%# '
 # ssh detection
 if [ "$SSH_TTY" ] || [ "$SSH_CLIENT" ]; then
     PS1="${PS1/\(%T\)/(ssh) (%T)}"
 fi
 
+
+# zsh options
 setopt histignoredups
 setopt histignorespace
 setopt histreduceblanks
@@ -53,6 +55,11 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# complete_history
+zstyle ':completion:history-words:*' range 500:40
+# move around completion candidates
+zstyle ':completion:*' menu yes select
 
 # it seems necessary
 PATH="$HOME/.local/bin:$PATH"
@@ -95,3 +102,19 @@ alias rsync='rsync -e "ssh -o ClearAllForwardings=yes"'
 
 alias oc='opencode'
 # maybe add "o" or "c" in the future.
+
+
+# envs
+export MANWIDTH=88
+
+# some utils
+# switch the prompt to a simplified one.
+function switch-prompt () {
+    if [[ -z "${_STORED_PS1:-}" ]]; then
+        _STORED_PS1="$PS1"
+        PS1='%(?..[%?] )%F{green}user%f:%F{blue}%~%f$ '
+    else
+        PS1="${_STORED_PS1}"
+        _STORED_PS1=""
+    fi
+}

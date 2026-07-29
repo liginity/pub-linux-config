@@ -176,6 +176,8 @@ fi
 #  exec tmux new -Asdefault
 #fi
 
+# envs
+export MANWIDTH=88
 # in order to use vim in ipython
 export EDITOR=vim
 
